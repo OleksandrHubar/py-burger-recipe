@@ -7,7 +7,7 @@ class Validator(ABC):
     def validate(self, value: tuple) -> None:
         pass
 
-    def __set_name__(self, owner: type, name: str):
+    def __set_name__(self, owner: type, name: str) -> None:
         self.protected_name = "_" + name
 
     def __get__(self, instance: object, owner: type) -> None:
@@ -23,7 +23,7 @@ class Number(Validator):
         self.min_value = min_value
         self.max_value = max_value
 
-    def validate(self, value) -> None:
+    def validate(self, value: int) -> None:
         if not isinstance(value, int):
             raise TypeError("Quantity should be integer.")
 
